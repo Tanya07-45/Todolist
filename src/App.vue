@@ -3,38 +3,7 @@
    
     <div class="todo-wrapper">
       <div class="todo-container">
-       <div clas="todo-list">
-          <div class="todo-item">
-            <div class="todo-item-content">
-              <div class="todo-item-content-title">
-                Walk the dog
-              </div>
-              <div class="todo-item-content-description">
-                Go to forrest near the Zoo
-              </div>
-            </div>
-          </div>
-          <div class="todo-item">
-            <div class="todo-item-content">
-              <div class="todo-item-content-title">
-                Buy a bread
-              </div>
-              <div class="todo-item-content-description">
-                Whole grain bread would be good
-              </div>
-            </div>
-          </div>
-          <div class="todo-item">
-            <div class="todo-item-content">
-              <div class="todo-item-content-title">
-                Learn programming
-              </div>
-              <div class="todo-item-content-description">
-                Tomorrow would be best!
-              </div>
-            </div>
-          </div>
-        </div>
+       <Todolist />
       </div>
     </div>
 
@@ -44,8 +13,13 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import playground from './playground.js'
+import Todolist from '@/components/Todolist'
+
 export default {
   name: 'App',
+components:{
+  Todolist
+},
 
   // This function is run automaticaly by VUE framework
   created() {
@@ -55,7 +29,8 @@ export default {
 }
 </script>
 
-<style lang ="scss">
+<style lang ="scss" scoped>
+$colorrr:red;
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -64,34 +39,24 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.todo-wrapper {
-  /* flexible styling */
-  display: flex;
-  /* it defines alignment along the main axis */
-  justify-content: center;
+
+.todo {
+  &-wrapper {
+    /* flexible styling */
+    display: flex;
+     justify-content: center;
   /*flex-direction: column;*/
   width: 100%;
   /*height: 2000px;*/
-}
-.todo-container {
+    }
+&-container {
   width: 400px;
   min-height: 400px;
-  background-color: #ededed;
+  background-color:$colorrr;
   border-radius: 50px;
 }
-.todo-item {
-  background-color: gray;
-  min-height: 70px;
-  margin: 10px;
-  padding: 10px;
-  color: white;
-  border-radius: 45px;
-  font-size: 23px;
+
 }
-.todo-item-content-title {
-  font-weight: bold;
-}
-.todo-item-content-description {
-  font-size: 19px;
-}
+
+
 </style>
