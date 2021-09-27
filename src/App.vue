@@ -1,17 +1,43 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <h1>Hello world </h1>
-    <div> {{text}}</div>
-     <div>{{someNumber}}</div>
-    <div>{{canDecide}}</div>
-    <div>{{someObject}}</div>
-    <div>{{someObject.a}}</div>
-    <div>{{someObject.c}}</div>
-    <div>{{dataFunction}}</div>
-    <div>{{dataFunction()}}</div>
-    <!-- <div>{{testFunctionA()}}</div> -->
+   
+    <div class="todo-wrapper">
+      <div class="todo-container">
+       <div clas="todo-list">
+          <div class="todo-item">
+            <div class="todo-item-content">
+              <div class="todo-item-content-title">
+                Walk the dog
+              </div>
+              <div class="todo-item-content-description">
+                Go to forrest near the Zoo
+              </div>
+            </div>
+          </div>
+          <div class="todo-item">
+            <div class="todo-item-content">
+              <div class="todo-item-content-title">
+                Buy a bread
+              </div>
+              <div class="todo-item-content-description">
+                Whole grain bread would be good
+              </div>
+            </div>
+          </div>
+          <div class="todo-item">
+            <div class="todo-item-content">
+              <div class="todo-item-content-title">
+                Learn programming
+              </div>
+              <div class="todo-item-content-description">
+                Tomorrow would be best!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -20,43 +46,16 @@
 import playground from './playground.js'
 export default {
   name: 'App',
-  // components: {
-  //   HelloWorld
-  // },
-  data() {
-    return {
-      text: 'Some String value',
-      someNumber: 16,
-      canDecide: true,
-      list: [1,2,3],
-      someObject: {
-        a: 1,
-        b: 2,
-        c: [1,2,3,4,5]
-      },
-      dataFunction() {
-        console.log('Data function')
-        return 'I am Data function'
-      }
-    }
-  },
+
   // This function is run automaticaly by VUE framework
   created() {
     playground()
   },
-  // methods: {
-  //   testFunctionA() {
-  //     console.log(this.text)
-  //     console.log(this.someNumber)
-  //     console.log(this.someObject.a)
-  //     this.dataFunction()
-  //     return 'I a test function A'
-  //   }
-  // }
+  
 }
 </script>
 
-<style>
+<style lang ="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -64,5 +63,35 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.todo-wrapper {
+  /* flexible styling */
+  display: flex;
+  /* it defines alignment along the main axis */
+  justify-content: center;
+  /*flex-direction: column;*/
+  width: 100%;
+  /*height: 2000px;*/
+}
+.todo-container {
+  width: 400px;
+  min-height: 400px;
+  background-color: #ededed;
+  border-radius: 50px;
+}
+.todo-item {
+  background-color: gray;
+  min-height: 70px;
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  border-radius: 45px;
+  font-size: 23px;
+}
+.todo-item-content-title {
+  font-weight: bold;
+}
+.todo-item-content-description {
+  font-size: 19px;
 }
 </style>
