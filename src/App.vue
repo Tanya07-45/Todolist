@@ -8,7 +8,7 @@
          <Todolist :tothe="todos" /> 
          <div class="todo-create-btn-container">
         
-              <modal />
+              <todocreate />
         </div>
       </div>
     </div>
@@ -20,13 +20,13 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import playground from './playground.js'
 import Todolist from '@/components/Todolist'
-import modal from '@/components/modal'
+import todocreate from '@/components/Todocreate'
 
 
 export default {
   name: 'App',
 components:{
-  Todolist,modal
+  Todolist,todocreate
 },
 //function that returns object.
 data() {
@@ -69,6 +69,24 @@ $colorrr:red;
   color: #2c3e50;
   margin-top: 60px;
 }
+.app-form {
+    .label {
+      display: block;
+      font-size: 18px;
+      font-weight: bold
+    }
+    .form-input {
+      padding: 10px;
+      font-size: 17px;
+    }
+    .form-input {
+      padding: 10px;
+      font-size: 17px;
+    }
+    .form-control {
+      margin-bottom: 10px
+    }
+  }
 .is-primary {
   background-color: #53b0ee !important;
 }
