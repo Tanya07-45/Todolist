@@ -74,6 +74,9 @@ $colorrr:red;
   color: #2c3e50;
   margin-top: 60px;
 }
+.app-error {
+  color: #ff1212;
+}
 .app-form {
     .label {
       display: block;
@@ -94,6 +97,12 @@ $colorrr:red;
   }
 .is-primary {
   background-color: #53b0ee !important;
+}
+.is-warning {
+  background-color: #6453ff !important;
+}
+.is-danger {
+  background-color: #f80404 !important;
 }
 .app-button {
   font-size: 20px;

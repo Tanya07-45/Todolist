@@ -8,6 +8,7 @@
     <div class="modal" :class="{'is-active': isOpen}">
       <div class="modal-content">
         <span @click="isOpen = false" class="close">&times;</span>
+         <!-- <span @click="close" class="close">&times;</span> -->
         <slot />
       </div>
         </div>
@@ -15,9 +16,27 @@
 </template>
 <script>
 export default {
+   props: {
+    close: {
+      type: Boolean,
+      required: false
+    }
+  },
    data() {
     return {
        isOpen: false
+    }
+     },
+  watch: {
+    close(isClose) {
+      if (isClose && this.isOpen) {
+        this.isOpen = false
+      }
+    }
+  },
+  methods: {
+    close() {
+      this.isOpen = false
     }
    }
 }

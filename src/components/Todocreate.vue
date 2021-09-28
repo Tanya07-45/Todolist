@@ -1,5 +1,5 @@
 <template>
-  <modal>
+  <modal :close="forceClose">
     <form class="app-form">
       <div class="form-control">
         <label class="label">Title</label>
@@ -17,6 +17,11 @@
           class="form-input">
         </textarea>
       </div>
+       <!-- <div class="app-error">
+        <div class="form-error">
+          {{formError}}
+        </div>
+      </div> -->
       <button
         @click="submitForm"
         type="button"
@@ -36,7 +41,8 @@ export default {
       form: {
         title: '',
         description: ''
-      }
+      },
+        forceClose: false
     }
   },
   computed: {
@@ -49,7 +55,10 @@ export default {
     //    if we write thi.form then it will store empty values
         if (this.isFormValid) {
         this.$emit('formSubmitted', {...this.form})
+        this.forceClose=true
+        this.$nextTick(()=> this.forceClose=true)
         this.resetForm()
+      
       }
     },
     resetForm() {
