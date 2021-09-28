@@ -18,7 +18,7 @@
         </textarea>
       </div>
       <button
-        @click="createTodo"
+        @click="submitForm"
         type="button"
         class="app-button is-primary">Confirm</button>
     </form>
@@ -39,9 +39,23 @@ export default {
       }
     }
   },
+  computed: {
+    isFormValid() {
+      return this.form.title && this.form.description ? true : false
+    }
+  },
   methods: {
-    createTodo() {
-      console.log(this.form)
+   submitForm() {
+    //    if we write thi.form then it will store empty values
+        if (this.isFormValid) {
+        this.$emit('formSubmitted', {...this.form})
+        this.resetForm()
+      }
+    },
+    resetForm() {
+      this.form.title = ''
+      this.form.description = ''
+     // console.log(this.form)
     }
   }
 }
