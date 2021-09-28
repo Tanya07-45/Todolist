@@ -1,9 +1,9 @@
  <template>
-     <div clas="todo-list">
+     <div class="todo-list">
 <!-- directive is a special token in the markup that allows the vue framework to do something to a element. -->
 <!-- when we remove title property it shiws errorin console because title i sequired according to our script -->
     <Todoitem
-      v-for="todo in todos"
+      v-for="todo in tothe"
       :key="todo._id"
       :title="todo.title"
       :description="todo['description']" />
@@ -20,7 +20,7 @@ export default {
     Todoitem
      },
  props: {
-    todos: {
+    tothe: {
       required: true,
       type: Array
     }

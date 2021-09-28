@@ -4,19 +4,19 @@
     <div class="todo-wrapper">
       <div class="todo-container">
        <!-- <Todolist />sending arrays of todos -->
-         <Todolist :todos="todos" />
+       <!-- //custom components -->
+         <Todolist :tothe="todos" /> 
          <div class="todo-create-btn-container">
-          <div class="app-button">
+          <!-- <div v-on:click="openModal" class="app-button"> -->
+             <div @click="openModal" class="app-button">
             Create
           </div>
         </div>
       </div>
     </div>
-      <div class="modal">
-        <div class="modal-content">
-          Modal Window
-        </div>
-    </div>
+    <modal 
+    v-on:modalClosed="closeModal"
+    :isOpen="isModalOpen" />
 
   </div>
 </template>
@@ -25,15 +25,18 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import playground from './playground.js'
 import Todolist from '@/components/Todolist'
+import modal from '@/components/modal'
+
 
 export default {
   name: 'App',
 components:{
-  Todolist
+  Todolist,modal
 },
 //function that returns object.
 data() {
     return {
+      isModalOpen: false,
       todos: [
         {
           _id: '1',
@@ -57,6 +60,18 @@ data() {
   created() {
     playground()
   },
+  methods:{
+    openModal(){
+      //  this.isModalOpen = !this.isModalOpen
+       this.isModalOpen = true
+      // alert("opening modal!!!!")
+    },
+    closeModal(data){
+      alert(data.value)
+     this.isModalOpen = false
+    }
+  }
+
   
 }
 </script>
@@ -82,24 +97,8 @@ $colorrr:red;
     cursor: pointer;
   }
 }
-.modal {
-  display: none;
-  position: fixed; // stay in place
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto; // enable scroll if needed
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
+
+
 
 
 .todo {
@@ -119,7 +118,7 @@ $colorrr:red;
   flex-direction: column;
   width: 400px;
   min-height: 400px;
-  background-color:$colorrr;
+  background-color:black;
   border-radius: 30px;
 }
 
