@@ -1,31 +1,57 @@
 <template>
-      <div class="modal" :class="{'is-active': isOpen}">
-        <div class="modal-content">
-           <!-- <span @click="closeModal" class="close">&times;</span> -->
-            <span @click="$emit('modalClosed', {value: 'We are just testing'})" class="close">&times;</span>
-           <p>Modal Window</p>
-      
+      <div>
+    <div
+      @click="isOpen = true"
+      class="app-button">
+      Create
+    </div>
+    <div class="modal" :class="{'is-active': isOpen}">
+      <div class="modal-content">
+        <span @click="isOpen = false" class="close">&times;</span>
+         <form class="app-form">
+          <div class="form-control">
+            <label class="label">Title</label>
+            <input class="form-input" type="text">
+          </div>
+          <div class="form-control">
+            <label class="label">Description</label>
+            <input class="form-input" type="text">
+          </div>
+          <button type="button" class="app-button is-primary">Confirm</button>
+        </form>
+      </div>
         </div>
     </div>
 </template>
 <script>
 export default {
- props: {
-    isOpen: {
-      required: true,
-      type: Boolean
-    }
-  },
-  // this will work but gives error in console
-  methods:{
-    emitCloseModal() {
-      this.$emit('modalClosed' ,{value:'we are just testing'})
+  data() {
+    return {
+      isOpen: false
     }
   }
 }
 </script>
 <style scoped lang="scss">
     
+    .app-form {
+    .label {
+      display: block;
+      font-size: 18px;
+      font-weight: bold
+    }
+    .form-input {
+      padding: 10px;
+      font-size: 17px;
+    }
+    .form-input {
+      padding: 10px;
+      font-size: 17px;
+    }
+    .form-control {
+      margin-bottom: 10px
+    }
+  }
         .modal {
             display: none;
             position: fixed; // stay in place
@@ -46,6 +72,7 @@ export default {
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
+             text-align: left;
         }
         .close {
           color: #aaa;

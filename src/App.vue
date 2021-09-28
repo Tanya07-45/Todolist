@@ -7,16 +7,11 @@
        <!-- //custom components -->
          <Todolist :tothe="todos" /> 
          <div class="todo-create-btn-container">
-          <!-- <div v-on:click="openModal" class="app-button"> -->
-             <div @click="openModal" class="app-button">
-            Create
-          </div>
+        
+              <modal />
         </div>
       </div>
     </div>
-    <modal 
-    v-on:modalClosed="closeModal"
-    :isOpen="isModalOpen" />
 
   </div>
 </template>
@@ -36,7 +31,7 @@ components:{
 //function that returns object.
 data() {
     return {
-      isModalOpen: false,
+     
       todos: [
         {
           _id: '1',
@@ -59,17 +54,6 @@ data() {
   // This function is run automaticaly by VUE framework
   created() {
     playground()
-  },
-  methods:{
-    openModal(){
-      //  this.isModalOpen = !this.isModalOpen
-       this.isModalOpen = true
-      // alert("opening modal!!!!")
-    },
-    closeModal(data){
-      alert(data.value)
-     this.isModalOpen = false
-    }
   }
 
   
@@ -82,9 +66,11 @@ $colorrr:red;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.is-primary {
+  background-color: #53b0ee !important;
 }
 .app-button {
   font-size: 20px;
@@ -97,7 +83,6 @@ $colorrr:red;
     cursor: pointer;
   }
 }
-
 
 
 
