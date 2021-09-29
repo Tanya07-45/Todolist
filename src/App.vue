@@ -21,7 +21,7 @@
 import playground from './playground.js'
 import Todolist from '@/components/Todolist'
 import todocreate from '@/components/Todocreate'
-
+import store from '@/store'
 
 export default {
   name: 'App',
@@ -31,24 +31,7 @@ components:{
 //function that returns object.
 data() {
     return {
-     
-      todos: [
-        {
-          _id: '1',
-          title: 'Walk the dog',
-          description: 'Go to forrest near the Zoo'
-        },
-        {
-          _id: '2',
-          title: 'Buy a bread',
-          description: 'Whole grain bread would be good'
-        },
-        {
-          _id: '3',
-          title: 'Learn Programming',
-          description: 'Preferable Tomorrow!'
-        }
-      ]
+      todos: store.state.todos
     }
   },
   // This function is run automaticaly by VUE framework
@@ -57,7 +40,7 @@ data() {
      },
   methods: {
     createTodo(todo) {
-      this.todos.push(todo)
+     store.createTodo(todo)
     }
   }
 
@@ -92,7 +75,10 @@ $colorrr:red;
       font-size: 17px;
     }
     .form-control {
-      margin-bottom: 10px
+      margin-bottom: 10px;
+      &-last {
+      margin-bottom: 0;
+    }
     }
   }
 .is-primary {

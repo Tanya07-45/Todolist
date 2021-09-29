@@ -1,5 +1,5 @@
  <template>
-     <div class="todo-item">
+     <div v-if="!editMode" class="todo-item">
             <div class="todo-item-content">
               <div class="todo-item-content-title">
                {{title}}
@@ -9,12 +9,40 @@
               </div>
             </div>
             <button
-                @click="editTodo"
-                class="app-button is-warning">Edit</button>
+                @click="editMode = true"
+                class="app-button is-warning">Edit
+            </button>
             <button
                 @click="deleteTodo"
-                class="app-button is-danger">Delete</button>
+                class="app-button is-danger">Delete
+            </button>
           </div>
+          <div v-else class="todo-item">
+              <form class="app-form">
+      <div class="form-control">
+        <label class="label">Title</label>
+        <input
+           :value="title"
+          class="form-input"
+          type="text">
+      </div>
+      <div class="form-control form-control-last">
+        <label class="label">Description</label>
+        <textarea
+          :value="description"
+          cols="30"
+          rows="2"
+          class="form-input">
+        </textarea>
+      </div>
+       <button
+                @click.prevent="editTodo"
+                class="app-button is-warning">Update</button>
+            <button
+                @click.prevent="editMode = false"
+                class="app-button is-danger">Cancel</button>
+    </form>
+            </div>
  </template>
 <script>
 export default {
@@ -30,6 +58,11 @@ export default {
       default: 'Default Description'
     }
     // Array, Object, String, Number, Boolean, Function
+  },
+  data() {
+    return {
+      editMode: false
+    }
   },
    methods: {
     editTodo() {
