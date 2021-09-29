@@ -22,14 +22,14 @@
       <div class="form-control">
         <label class="label">Title</label>
         <input
-           :value="title"
+          v-model="todo.title"
           class="form-input"
           type="text">
       </div>
       <div class="form-control form-control-last">
         <label class="label">Description</label>
         <textarea
-          :value="description"
+          v-model="todo.description"
           cols="30"
           rows="2"
           class="form-input">
@@ -45,8 +45,9 @@
             </div>
  </template>
 <script>
+import store from '@/store'
 export default {
-  // props: ['title', 'description'],
+
   props: {
     title: {
       type: String,
@@ -56,17 +57,28 @@ export default {
       type: String,
       required: false,
       default: 'Default Description'
+      },
+    _id: {
+      type: String,
+      required: true
     }
-    // Array, Object, String, Number, Boolean, Function
+   
   },
   data() {
     return {
-      editMode: false
+   
+        editMode: false,
+      todo: {
+        _id: this._id,
+        title: this.title,
+        description: this.description
+      }
     }
   },
    methods: {
     editTodo() {
-      alert('editing todo!')
+        store.dispatch('updateTodo', {...this.todo})
+      this.editMode = false
     },
     deleteTodo() {
       alert('deleting todo!')

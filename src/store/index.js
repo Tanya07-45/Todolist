@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 const store = {
     state: {
       todos: [
@@ -18,10 +20,27 @@ const store = {
         }
       ]
     },
-      createTodo(todo) {
+    actions: {
+      createTodo(state, todo) {
         todo._id = Math.random().toString(36).substr(2, 7)
-        this.state.todos.push(todo)
+        state.todos.push(todo)
+      },
+      updateTodo(state, todoToUpdate) {
+        const index = state.todos.findIndex((todo) => {
+          return todo._id === todoToUpdate._id
+        })
+  
+        Vue.set(state.todos, index, todoToUpdate)
+        
       }
     }
+    }
+  store.dispatch = function(action, payload) {
+    if (!this.actions[action]) {
+      throw new Error(`Action ${action} is not defined in the store`)
+    }
+  
+    return this.actions[action](this.state, payload)
+  }
 
     export default store  

@@ -5,7 +5,7 @@
       <div class="todo-container">
        <!-- <Todolist />sending arrays of todos -->
        <!-- //custom components -->
-         <Todolist :tothe="todos" /> 
+         <Todolist :todos="todos" /> 
          <div class="todo-create-btn-container">
         
               <todocreate  @formSubmitted="createTodo" />
@@ -40,7 +40,8 @@ data() {
      },
   methods: {
     createTodo(todo) {
-     store.createTodo(todo)
+    //  store.createTodo(todo)
+      store.dispatch('createTodo', todo)
     }
   }
 
@@ -120,7 +121,7 @@ $colorrr:red;
   display: flex;
   flex-direction: column;
   width: 400px;
-  min-height: 400px;
+  min-height: 200px;
   background-color:black;
   border-radius: 30px;
 }
