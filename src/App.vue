@@ -18,7 +18,7 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import playground from './playground.js'
+
 import Todolist from '@/components/Todolist'
 import todocreate from '@/components/Todocreate'
 import store from '@/store'
@@ -36,7 +36,7 @@ data() {
   },
   // This function is run automaticaly by VUE framework
   created() {
-    playground()
+    this.todos = store.dispatch('initStore')
      },
   methods: {
     createTodo(todo) {
